@@ -1,0 +1,18 @@
+# Contexte interne du projet : ne jamais publier
+CONTEXT.md
+
+# Journaux RÉELS : jamais commités (données personnelles)
+raw-logs/
+data/real/
+*.raw.jsonl
+mapping*.json
+
+# Sorties d'analyse : le rapport d'exemple est commité (données synthétiques).
+# `make demo` le régénère ; seul l'horodatage de génération change.
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+*.egg-info/

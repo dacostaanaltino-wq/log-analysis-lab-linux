@@ -1,0 +1,8 @@
+# Configuration du projet. Aucune dépendance d'exécution : le paquet
+# loganalyzer utilise uniquement la bibliothèque standard de Python.
+# pytest est nécessaire seulement pour les tests.
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-q --strict-markers"

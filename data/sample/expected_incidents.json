@@ -1,0 +1,76 @@
+{
+  "file": "synthetic-3days.jsonl",
+  "days": 3,
+  "seed": 42,
+  "events": 132,
+  "parameters": {
+    "window_minutes": 10,
+    "threshold": 5,
+    "min_invalid_users": 5,
+    "failures_before_success": 4,
+    "sudo_failures": 3,
+    "restart_loop_count": 3,
+    "business_hours": [
+      8,
+      19
+    ],
+    "timezone_name": "UTC"
+  },
+  "expected_alerts": {
+    "account_creation": 2,
+    "login_unusual_hours": 1,
+    "selinux_denied": 1,
+    "service_restart_loop": 1,
+    "ssh_brute_force": 1,
+    "ssh_success_after_failures": 1,
+    "ssh_user_enumeration": 1,
+    "sudo_abuse": 1
+  },
+  "incidents": [
+    {
+      "rule": "ssh_brute_force",
+      "time_utc": "2026-10-27T03:12:00Z",
+      "description": "12 échecs de mot de passe pour « admin » depuis 203.0.113.66 en 6 minutes"
+    },
+    {
+      "rule": "ssh_user_enumeration",
+      "time_utc": "2026-10-27T14:05:00Z",
+      "description": "7 comptes différents essayés depuis 198.51.100.23 en 3 minutes"
+    },
+    {
+      "rule": "ssh_success_after_failures",
+      "time_utc": "2026-10-28T10:42:00Z",
+      "description": "4 échecs puis connexion réussie pour « labuser » depuis 203.0.113.77"
+    },
+    {
+      "rule": "sudo_abuse",
+      "time_utc": "2026-10-29T09:30:00Z",
+      "description": "3 mots de passe sudo incorrects pour « stagiaire »"
+    },
+    {
+      "rule": "account_creation",
+      "time_utc": "2026-10-29T11:05:00Z",
+      "description": "création du compte « testuser »"
+    },
+    {
+      "rule": "account_creation",
+      "time_utc": "2026-10-29T11:11:00Z",
+      "description": "ajout de « testuser » au groupe « wheel » (escalade de privilèges)"
+    },
+    {
+      "rule": "service_restart_loop",
+      "time_utc": "2026-10-29T15:00:00Z",
+      "description": "testapp.service a redémarré 4 fois en 4 minutes"
+    },
+    {
+      "rule": "selinux_denied",
+      "time_utc": "2026-10-29T16:10:00Z",
+      "description": "3 refus SELinux pour le processus « httpd »"
+    },
+    {
+      "rule": "login_unusual_hours",
+      "time_utc": "2026-10-29T03:20:00Z",
+      "description": "connexion par clé de « labuser » à 03:20 (hors 8h–19h)"
+    }
+  ]
+}
